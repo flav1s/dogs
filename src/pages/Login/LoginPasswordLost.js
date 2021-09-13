@@ -5,6 +5,7 @@ import { Error } from "../../components/Error/Error";
 import useForm from "../../hooks/useForm";
 import useFetch from "../../hooks/useFetch";
 import { PASSWORD_LOST } from "../../api/api";
+import Head from "../../components/Helper/Head";
 
 const LoginPasswordLost = () => {
   const login = useForm();
@@ -19,12 +20,14 @@ const LoginPasswordLost = () => {
         url: "http://localhost:3000/login/perdeu",
       });
 
-      const { json } = await request(url, options);
+      await request(url, options);
     }
   }
 
   return (
     <section>
+      <Head title="Perdeu a senha?" />
+
       <h1 className="title">Perdeu a senha?</h1>
       {data ? (
         <p style={{ color: "#4c1" }}>{data}</p>
